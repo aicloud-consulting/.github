@@ -1,0 +1,20 @@
+# markdownlint configuration — A&C Consulting Services
+# https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+
+# Default: enable all rules, then override below
+default: true
+
+# MD013 — Line length: disable (we write prose docs, not code)
+MD013: false
+
+# MD033 — Inline HTML: allow (used for underline in CVs and emphasis)
+MD033: false
+
+# MD041 — First line should be top-level heading: disable for frontmatter docs
+MD041: false
+
+# MD024 — Multiple headings with the same content: allow (e.g. repeated "Impacto")
+MD024: false
+
+# MD036 — Emphasis used as a heading: disable (used for bold labels in docs)
+MD036: false

@@ -1,0 +1,85 @@
+name: "📄 Nuevo Documento"
+description: "Solicitar la creación de un nuevo documento en el sistema Docs as Code."
+title: "[NEW DOC] "
+labels: ["documentation", "new"]
+assignees: ["personal-abrahamchavez"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Solicitud de Nuevo Documento
+        Por favor completa todos los campos. Recuerda: **Cero Improvisación** — cada documento debe tener propósito, dueño y trazabilidad definidos antes de crearse.
+
+  - type: input
+    id: title
+    attributes:
+      label: "Título del documento"
+      placeholder: "ej. Política de Gestión de Accesos — IAM"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: repo
+    attributes:
+      label: "Repositorio destino"
+      options:
+        - "core-corporate-governance"
+        - "core-architecture-landscape"
+        - "core-design-system"
+        - "core-developer-portal"
+    validations:
+      required: true
+
+  - type: input
+    id: folder
+    attributes:
+      label: "Carpeta destino dentro del repo"
+      placeholder: "ej. policies/ | governance/ | go-to-market/"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: lang
+    attributes:
+      label: "Idioma"
+      options:
+        - "es-MX"
+        - "en-US"
+        - "Bilingüe (es-MX + en-US)"
+    validations:
+      required: true
+
+  - type: input
+    id: owner
+    attributes:
+      label: "Owner del documento (GitHub login)"
+      placeholder: "ej. personal-abrahamchavez"
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: "Propósito y contexto"
+      description: "¿Qué problema resuelve? ¿Quién lo consumirá (interno / cliente / legal)?"
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: "Documento fuente (si aplica)"
+      description: "Path relativo en Google Drive si es migración. Dejar vacío si es nuevo."
+      placeholder: "G:/My Drive/A&C/[nombre-archivo].md"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Checklist previo"
+      options:
+        - label: "Verifiqué que no existe un documento similar ya en el repo"
+          required: true
+        - label: "El documento tiene owner asignado"
+          required: true
+        - label: "Cumple con la Política de Clasificación de Información (PMSI)"
+          required: true

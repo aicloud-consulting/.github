@@ -1,0 +1,78 @@
+name: "✏️ Actualizar Documento"
+description: "Solicitar una actualización o corrección a un documento existente."
+title: "[UPDATE DOC] "
+labels: ["documentation", "update"]
+assignees: ["personal-abrahamchavez"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Solicitud de Actualización Documental
+        Documenta exactamente qué cambia, por qué y cuál es el impacto. La trazabilidad es obligatoria.
+
+  - type: input
+    id: doc_path
+    attributes:
+      label: "Path del documento a actualizar"
+      placeholder: "ej. core-corporate-governance/policies/pmsi.md"
+    validations:
+      required: true
+
+  - type: input
+    id: current_version
+    attributes:
+      label: "Versión actual del documento"
+      placeholder: "ej. 1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: new_version
+    attributes:
+      label: "Nueva versión propuesta"
+      placeholder: "ej. 1.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_changes
+    attributes:
+      label: "¿Qué cambia? (El Contexto)"
+      description: "Describe los cambios concretos. Sé específico."
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: "¿Por qué cambia? (La Solución)"
+      description: "Razón del cambio: nueva regulación, cambio operativo, corrección, etc."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: "¿Qué dependencias afecta? (El Impacto)"
+      description: "¿Qué otros documentos, procesos o equipos se ven afectados?"
+    validations:
+      required: true
+
+  - type: input
+    id: source_updated
+    attributes:
+      label: "¿Se actualizó el documento fuente en Google Drive?"
+      description: "Indicar si el origen fue modificado o si este es el documento vivo en DaC."
+      placeholder: "Sí / No / No aplica"
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Checklist"
+      options:
+        - label: "El campo `version` del frontmatter será actualizado"
+          required: true
+        - label: "El campo `last_review` del frontmatter será actualizado a la fecha de hoy"
+          required: true
+        - label: "Los documentos dependientes han sido notificados o actualizados"
+          required: true

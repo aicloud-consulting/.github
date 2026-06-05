@@ -1,0 +1,72 @@
+name: "🏆 Solicitud de Caso de Éxito / Evidencia"
+description: "Solicitar la creación o actualización de un Caso de Éxito o evidencia técnica para uso comercial."
+title: "[EVIDENCE REQUEST] "
+labels: ["documentation", "case-study", "go-to-market"]
+assignees: ["personal-abrahamchavez"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Solicitud de Caso de Éxito o Evidencia Técnica
+        Todo Caso de Éxito debe estar **completamente anonimizado** antes de publicarse en cualquier canal externo. El cliente real nunca se menciona; se describe por sector/escala/industria. Esta política es innegociable (cumplimiento NDA).
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: "Tipo de evidencia"
+      options:
+        - "Caso de Éxito nuevo (a partir de experiencia de un fundador)"
+        - "Actualización de Caso de Éxito existente"
+        - "Reference Architecture (diagrama técnico)"
+        - "Métrica de impacto para Sales Deck"
+    validations:
+      required: true
+
+  - type: input
+    id: owner
+    attributes:
+      label: "Fundador fuente de la experiencia"
+      placeholder: "ej. Abraham Chávez / Ceury"
+    validations:
+      required: true
+
+  - type: textarea
+    id: raw_experience
+    attributes:
+      label: "Experiencia cruda (sin anonimizar)"
+      description: "Describir el proyecto real: cliente, reto, solución, impacto. Este campo es INTERNO — nunca sale del repositorio privado."
+    validations:
+      required: true
+
+  - type: textarea
+    id: target_audience
+    attributes:
+      label: "Audiencia objetivo del caso de éxito"
+      description: "¿Para qué pitch / vertical / interlocutor se usará? (ej. CTO de empresa manufacturera, CISO de banco)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: lang
+    attributes:
+      label: "Idioma de entrega"
+      options:
+        - "es-MX"
+        - "en-US"
+        - "Bilingüe (es-MX + en-US)"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Checklist de anonimización"
+      options:
+        - label: "Ningún nombre de cliente aparecerá en la versión publicada"
+          required: true
+        - label: "Se describe al cliente por sector/industria/escala (ej. 'líder global del sector panificador')"
+          required: true
+        - label: "No hay fechas exactas ni datos que permitan triangular al cliente"
+          required: true
+        - label: "Cumple con el NDA firmado con el cliente original"
+          required: true
