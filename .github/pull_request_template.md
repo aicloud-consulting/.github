@@ -1,55 +1,55 @@
-# Pull Request — A&C Consulting Services
+# Pull Request -- A&C Consulting Services
 
-## 📋 Tipo de cambio
-<!-- Marca con una X lo que aplica -->
-- [ ] 📄 Nuevo documento
-- [ ] ✏️ Actualización de documento existente
-- [ ] 🗄️ Deprecación / archivado
-- [ ] 🏗️ Cambio de estructura (carpetas, naming, templates)
-- [ ] 🔧 Infraestructura DaC (workflows, CODEOWNERS, configuración)
+## Change Type
+<!-- Mark with an X what applies -->
+- [ ] New document
+- [ ] Document update
+- [ ] Deprecation / archiving
+- [ ] Structure change (folders, naming, templates)
+- [ ] DaC infrastructure (workflows, CODEOWNERS, configuration)
 
 ---
 
-## 1. El Contexto — ¿Qué problema resuelve este PR?
-<!-- Describe brevemente qué gap cubre o qué error corrige. Enlaza al Issue si aplica. -->
+## 1. The Context -- What problem does this PR solve?
+<!-- Briefly describe what gap it covers or what error it fixes. Link to Issue if applicable. -->
 
 Closes #
 
 ---
 
-## 2. La Solución — ¿Qué se hizo técnicamente?
-<!-- Lista de cambios concretos: archivos creados, modificados, estructura ajustada. -->
+## 2. The Solution -- What was done technically?
+<!-- List of concrete changes: files created, modified, structure adjusted. -->
 
 -
 -
 
 ---
 
-## 3. El Impacto — ¿Qué dependencias afecta y cómo validarlo?
-<!-- ¿Otros documentos referencian este contenido? ¿Hay procesos o artefactos downstream? -->
+## 3. The Impact -- What dependencies does it affect and how to validate?
+<!-- Do other documents reference this content? Are there downstream processes or artifacts? -->
 
 ---
 
-## ✅ Checklist obligatorio
+## Mandatory Checklist
 
-### Calidad documental
-- [ ] El frontmatter YAML está completo (`title`, `version`, `status`, `owner`, `last_review`, `source_doc`, `lang`)
-- [ ] El campo `source_doc` apunta al documento original en Google Drive (si es migración)
-- [ ] `version` y `last_review` están actualizados respecto a la versión anterior
-- [ ] El documento está en el idioma correcto (`es-MX` / `en-US`) o ambos si es bilingüe
+### Document Quality
+- [ ] YAML frontmatter is complete (`title`, `version`, `status`, `owner`, `last_review`, `source_doc`, `lang`)
+- [ ] `source_doc` field points to the original document in Google Drive (if migration)
+- [ ] `version` and `last_review` are updated relative to the previous version
+- [ ] The document is in the correct language (`es-MX` / `en-US`) or both if bilingual
 
-### Contenido
-- [ ] No hay información confidencial de clientes sin anonimizar (cumplimiento NDA)
-- [ ] No hay datos corporativos incompletos visibles (ej. `TBD`, `[PENDIENTE]`) en documentos de estado `approved`
-- [ ] El tono de voz cumple con el estándar A&C ("Tough Love" técnico, sin palabras restringidas)
-- [ ] Los enlaces internos y externos son válidos
+### Content
+- [ ] No confidential client information without anonymization (NDA compliance)
+- [ ] No incomplete corporate data visible (e.g. `TBD`, `[PENDING]`) in `approved` documents
+- [ ] Tone of voice follows A&C standard ("Tough Love" technical, no restricted words)
+- [ ] Internal and external links are valid
 
-### Proceso
-- [ ] El PR tiene un Issue asociado o una justificación clara de por qué no aplica
-- [ ] El PR fue revisado por al menos un Owner del repo antes de solicitar merge
-- [ ] El CI de calidad documental (`docs-quality.yml`) pasa sin errores
+### Process
+- [ ] PR has an associated Issue or a clear justification for why it does not apply
+- [ ] PR was reviewed by at least one repo Owner before requesting merge
+- [ ] Documentation quality CI (`docs-quality.yml`) passes without errors
 
 ---
 
-## 📎 Referencias
-<!-- Issues, documentos fuente, decisiones de arquitectura o contexto relevante -->
+## References
+<!-- Issues, source documents, architecture decisions, or relevant context -->

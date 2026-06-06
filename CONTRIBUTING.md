@@ -1,37 +1,37 @@
-# Contribuyendo a los Proyectos de A&C
+# Contributing to A&C Projects
 
-¡Gracias por tu interés en contribuir a los repositorios de **A&C**! 
+Thank you for your interest in contributing to **A&C** repositories!
 
-Nuestra filosofía de trabajo se basa en la **cero improvisación** y en una ejecución técnica impecable. Para mantener nuestros altos estándares de calidad arquitectónica (MACH, API-first, Cloud-native) y seguridad (DevSecOps), te pedimos que sigas estas pautas al contribuir en cualquier proyecto de la organización.
+Our working philosophy is built on **zero improvisation** and flawless technical execution. To maintain our high standards of architectural quality (MACH, API-first, Cloud-native) and security (DevSecOps), please follow these guidelines when contributing to any project in the organization.
 
-## 1. Filosofía de Arquitectura (Cero Deuda Técnica)
+## 1. Architecture Philosophy (Zero Technical Debt)
 
-Todo código aportado debe alinearse con nuestros principios de **Enterprise Standards**:
-- **Agnóstico y Modular**: Privilegiamos la arquitectura basada en microservicios y soluciones escalables.
-- **Calidad Predictible**: Todo cambio debe estar respaldado por pruebas unitarias/de integración automatizadas. No consideramos un trabajo "Terminado" (Definition of Done) hasta que supera los umbrales de validación y seguridad.
-- **Eficiencia**: En A&C consideramos el tiempo como una variable crítica. Evita soluciones "temporales" que incrementen la deuda técnica.
+All contributed code must align with our **Enterprise Standards** principles:
+- **Agnostic and Modular**: We prioritize microservices-based architecture and scalable solutions.
+- **Predictable Quality**: Every change must be backed by automated unit/integration tests. We do not consider work "Done" (Definition of Done) until it passes validation and security thresholds.
+- **Efficiency**: At A&C we treat time as a critical variable. Avoid "temporary" solutions that increase technical debt.
 
-## 2. Proceso de Contribución (A&C Agile Delivery Framework)
+## 2. Contribution Process (A&C Agile Delivery Framework)
 
-1. **Issues Primero**: Antes de crear un Pull Request (PR) masivo, abre un Issue para discutir la arquitectura y el enfoque del cambio.
-2. **Branching Model**: Utilizamos una estrategia estandarizada. 
-   - `feature/nombre-de-funcionalidad` para nuevos desarrollos.
-   - `bugfix/descripcion-del-bug` para resolución de errores.
-   - `hotfix/incidencia-critica` para parches urgentes en producción.
-3. **Commits Semánticos**: Los mensajes de commit deben ser descriptivos (ej. `feat: add AI governance module`, `fix: resolve auth race condition`).
-4. **Revisión por Pares (Peer Review)**: Todo PR debe ser revisado y aprobado por al menos un arquitecto o líder técnico del repositorio antes de ser integrado.
+1. **Issues First**: Before creating a large Pull Request (PR), open an Issue to discuss the architecture and approach of the change.
+2. **Branching Model**: We use a standardized strategy.
+   - `feature/feature-name` for new development.
+   - `bugfix/bug-description` for bug fixes.
+   - `hotfix/critical-incident` for urgent production patches.
+3. **Semantic Commits**: Commit messages must be descriptive (e.g. `feat: add AI governance module`, `fix: resolve auth race condition`).
+4. **Peer Review**: Every PR must be reviewed and approved by at least one architect or technical lead of the repository before being merged.
 
-## 3. Seguridad por Diseño (DevSecOps)
+## 3. Security by Design (DevSecOps)
 
-- **Cero Credenciales**: NUNCA confirmes contraseñas, secretos, tokens o claves de API en el código fuente.
-- **Gobernanza de IA**: Si tu contribución involucra el uso de modelos de Inteligencia Artificial o prompts automatizados, asegúrate de cumplir con la *Política Maestra de Seguridad de la Información (PMSI)* de A&C.
-- **Análisis de Vulnerabilidades**: El código será evaluado por nuestras herramientas automatizadas de CI/CD. Asegúrate de corregir cualquier hallazgo de seguridad (SAST/DAST) antes de solicitar la revisión.
+- **Zero Credentials**: NEVER commit passwords, secrets, tokens, or API keys to source code.
+- **AI Governance**: If your contribution involves the use of Artificial Intelligence models or automated prompts, ensure compliance with A&C's *Master Information Security Policy (PMSI)*.
+- **Vulnerability Analysis**: Code will be evaluated by our automated CI/CD tools. Ensure you fix any security findings (SAST/DAST) before requesting review.
 
-## 4. Estructura de Entregables (Regla del 3)
+## 4. Deliverable Structure (The Rule of 3)
 
-Nuestra comunicación técnica es directa, sin ruido visual y altamente ejecutiva. Cuando documentes PRs o Issues:
-1. **El Contexto**: ¿Qué problema se resuelve?
-2. **La Solución**: ¿Cómo se abordó técnicamente?
-3. **El Impacto/Acción**: ¿Qué dependencias afecta y cómo validarlo?
+Our technical communication is direct, free of visual noise, and highly executive. When documenting PRs or Issues:
+1. **The Context**: What problem is being solved?
+2. **The Solution**: How was it technically addressed?
+3. **The Impact/Action**: What dependencies does it affect and how to validate it?
 
-¡Agradecemos profundamente tu talento hiper-especializado y tu compromiso con la excelencia!
+We deeply appreciate your hyper-specialized talent and your commitment to excellence!
