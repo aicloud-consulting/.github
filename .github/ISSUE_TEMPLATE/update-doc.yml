@@ -1,5 +1,5 @@
-name: "✏️ Actualizar Documento"
-description: "Solicitar una actualización o corrección a un documento existente."
+name: "✏️ Update Document"
+description: "Request an update or correction to an existing document."
 title: "[UPDATE DOC] "
 labels: ["documentation", "update"]
 assignees: ["personal-abrahamchavez"]
@@ -7,72 +7,72 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Solicitud de Actualización Documental
-        Documenta exactamente qué cambia, por qué y cuál es el impacto. La trazabilidad es obligatoria.
+        ## Document Update Request
+        Document exactly what changes, why, and what the impact is. Traceability is mandatory.
 
   - type: input
     id: doc_path
     attributes:
-      label: "Path del documento a actualizar"
-      placeholder: "ej. core-corporate-governance/policies/pmsi.md"
+      label: "Path of the document to update"
+      placeholder: "e.g. core-corporate-governance/policies/pmsi_v1.md"
     validations:
       required: true
 
   - type: input
     id: current_version
     attributes:
-      label: "Versión actual del documento"
-      placeholder: "ej. 1.0"
+      label: "Current document version"
+      placeholder: "e.g. 1.0"
     validations:
       required: true
 
   - type: input
     id: new_version
     attributes:
-      label: "Nueva versión propuesta"
-      placeholder: "ej. 1.1"
+      label: "Proposed new version"
+      placeholder: "e.g. 1.1"
     validations:
       required: true
 
   - type: textarea
     id: what_changes
     attributes:
-      label: "¿Qué cambia? (El Contexto)"
-      description: "Describe los cambios concretos. Sé específico."
+      label: "What changes? (The Context)"
+      description: "Describe the specific changes. Be precise."
     validations:
       required: true
 
   - type: textarea
     id: why
     attributes:
-      label: "¿Por qué cambia? (La Solución)"
-      description: "Razón del cambio: nueva regulación, cambio operativo, corrección, etc."
+      label: "Why does it change? (The Solution)"
+      description: "Reason for the change: new regulation, operational change, correction, etc."
     validations:
       required: true
 
   - type: textarea
     id: impact
     attributes:
-      label: "¿Qué dependencias afecta? (El Impacto)"
-      description: "¿Qué otros documentos, procesos o equipos se ven afectados?"
+      label: "What dependencies does it affect? (The Impact)"
+      description: "What other documents, processes, or teams are affected?"
     validations:
       required: true
 
   - type: input
     id: source_updated
     attributes:
-      label: "¿Se actualizó el documento fuente en Google Drive?"
-      description: "Indicar si el origen fue modificado o si este es el documento vivo en DaC."
-      placeholder: "Sí / No / No aplica"
+      label: "Was the source document in Google Drive updated?"
+      description: "Indicate whether the origin was modified or if this is the live DaC document."
+      placeholder: "Yes / No / Not applicable"
 
   - type: checkboxes
     id: checklist
     attributes:
       label: "Checklist"
       options:
-        - label: "El campo `version` del frontmatter será actualizado"
+        - label: "The `version` field in the frontmatter will be updated."
           required: true
-        - label: "El campo `last_review` del frontmatter será actualizado a la fecha de hoy"
+        - label: "The `last_review` field in the frontmatter will be updated to today's date."
           required: true
-        - label: "Los documentos dependientes han sido notificados o actualizados"
+        - label: "Dependent documents have been notified or updated."
           required: true

@@ -1,5 +1,5 @@
-name: "📄 Nuevo Documento"
-description: "Solicitar la creación de un nuevo documento en el sistema Docs as Code."
+name: "📄 New Document"
+description: "Request the creation of a new document in the Docs as Code system."
 title: "[NEW DOC] "
 labels: ["documentation", "new"]
 assignees: ["personal-abrahamchavez"]
@@ -7,79 +7,76 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Solicitud de Nuevo Documento
-        Por favor completa todos los campos. Recuerda: **Cero Improvisación** — cada documento debe tener propósito, dueño y trazabilidad definidos antes de crearse.
+        ## New Document Request
+        Please fill out all fields. Remember: **Zero Improvisation** — every document must have a defined purpose, owner, and traceability before creation.
 
   - type: input
     id: title
     attributes:
-      label: "Título del documento"
-      placeholder: "ej. Política de Gestión de Accesos — IAM"
+      label: "Document title"
+      placeholder: "e.g. Identity and Access Management Policy (IAM)"
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: repo
     attributes:
-      label: "Repositorio destino"
-      options:
-        - "core-corporate-governance"
-        - "core-architecture-landscape"
-        - "core-design-system"
-        - "core-developer-portal"
+      label: "Target repository"
+      placeholder: "e.g. core-target-repo"
+      description: "Enter the specific private or public repository name."
     validations:
       required: true
 
   - type: input
     id: folder
     attributes:
-      label: "Carpeta destino dentro del repo"
-      placeholder: "ej. policies/ | governance/ | go-to-market/"
+      label: "Target folder inside the repo"
+      placeholder: "e.g. docs/ | engineering/ | architecture/"
     validations:
       required: true
 
   - type: dropdown
     id: lang
     attributes:
-      label: "Idioma"
+      label: "Language"
       options:
         - "es-MX"
         - "en-US"
-        - "Bilingüe (es-MX + en-US)"
+        - "Bilingual (es-MX + en-US)"
     validations:
       required: true
 
   - type: input
     id: owner
     attributes:
-      label: "Owner del documento (GitHub login)"
-      placeholder: "ej. personal-abrahamchavez"
+      label: "Document Owner (GitHub login)"
+      placeholder: "e.g. personal-abrahamchavez"
     validations:
       required: true
 
   - type: textarea
     id: purpose
     attributes:
-      label: "Propósito y contexto"
-      description: "¿Qué problema resuelve? ¿Quién lo consumirá (interno / cliente / legal)?"
+      label: "Purpose and Context"
+      description: "What problem does this solve? Who is the target audience (internal / client / legal)?"
     validations:
       required: true
 
   - type: input
     id: source
     attributes:
-      label: "Documento fuente (si aplica)"
-      description: "Path relativo en Google Drive si es migración. Dejar vacío si es nuevo."
-      placeholder: "G:/My Drive/A&C/[nombre-archivo].md"
+      label: "Source document (if applicable)"
+      description: "Relative path in Google Drive if this is a migration. Leave empty if it's new."
+      placeholder: "G:/My Drive/A&C/[filename].md"
 
   - type: checkboxes
     id: checklist
     attributes:
-      label: "Checklist previo"
+      label: "Pre-flight Checklist"
       options:
-        - label: "Verifiqué que no existe un documento similar ya en el repo"
+        - label: "I verified that a similar document does not already exist in the repo."
           required: true
-        - label: "El documento tiene owner asignado"
+        - label: "The document has an assigned owner."
           required: true
-        - label: "Cumple con la Política de Clasificación de Información (PMSI)"
+        - label: "It complies with the Information Classification Policy (PMSI)."
           required: true

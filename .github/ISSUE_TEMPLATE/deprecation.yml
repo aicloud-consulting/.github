@@ -1,5 +1,5 @@
-name: "🗄️ Deprecar / Archivar Documento"
-description: "Solicitar la baja, archivado o marcado como 'superseded' de un documento."
+name: "🗄️ Deprecate / Archive Document"
+description: "Request to sunset, archive, or mark a document as 'superseded'."
 title: "[DEPRECATION] "
 labels: ["documentation", "deprecation"]
 assignees: ["personal-abrahamchavez"]
@@ -7,46 +7,46 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Solicitud de Depreciación Documental
-        Un documento deprecado **nunca se elimina** del historial Git; solo cambia su `status` en el frontmatter a `superseded` o `archived` y se mueve a una carpeta `_archived/` si corresponde.
+        ## Document Deprecation Request
+        A deprecated document is **never deleted** from Git history; it only changes its frontmatter `status` to `superseded` or `archived` and is moved to an `_archived/` folder if applicable.
 
   - type: input
     id: doc_path
     attributes:
-      label: "Path del documento a deprecar"
-      placeholder: "ej. core-corporate-governance/governance/term-sheet-v1.md"
+      label: "Path of the document to deprecate"
+      placeholder: "e.g. target-repo/folder/document-name-v1.md"
     validations:
       required: true
 
   - type: dropdown
     id: action
     attributes:
-      label: "Tipo de acción"
+      label: "Action Type"
       options:
-        - "superseded — reemplazado por una versión nueva"
-        - "archived — ya no aplica, se conserva como histórico"
-        - "deleted — eliminar por completo (requiere aprobación Owner)"
+        - "superseded — replaced by a newer version"
+        - "archived — no longer applicable, kept for historical record"
+        - "deleted — permanently delete (requires Owner approval)"
     validations:
       required: true
 
   - type: input
     id: replacement
     attributes:
-      label: "Documento que lo reemplaza (si aplica)"
-      placeholder: "ej. core-corporate-governance/governance/term-sheet-v2.md"
+      label: "Replacement Document (if applicable)"
+      placeholder: "e.g. target-repo/folder/document-name-v2.md"
 
   - type: textarea
     id: reason
     attributes:
-      label: "Motivo de la deprecación"
+      label: "Reason for deprecation"
     validations:
       required: true
 
   - type: textarea
     id: impact
     attributes:
-      label: "Documentos o procesos que referencian este doc"
-      description: "Listar para actualizar referencias antes de deprecar."
+      label: "Documents or processes referencing this doc"
+      description: "List them here so references can be updated before deprecation."
     validations:
       required: true
 
@@ -55,9 +55,9 @@ body:
     attributes:
       label: "Checklist"
       options:
-        - label: "Se notificó al owner del documento"
+        - label: "The document owner has been notified."
           required: true
-        - label: "Se identificaron y actualizarán todas las referencias al documento"
+        - label: "All references to the document have been identified and will be updated."
           required: true
-        - label: "El documento nuevo (si aplica) ya está en estado `approved`"
+        - label: "The new document (if applicable) is already in an `approved` state."
           required: true

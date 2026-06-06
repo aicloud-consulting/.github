@@ -1,31 +1,30 @@
-# A&C Consulting Services — Repositorio de Gobernanza Organizacional
+# A&C Consulting Services — Organizational Governance Repository
 
-Este repositorio contiene las políticas, plantillas y estándares que aplican a **todos los repositorios** de la organización [`aicloud-consulting`](https://github.com/aicloud-consulting).
+This repository contains the policies, templates, and standards that apply to **all repositories** within the `aicloud-consulting` organization.
 
-## Contenido
+## Contents
 
-| Artefacto | Descripción |
+| Artefact | Description |
 |---|---|
-| [`CONTRIBUTING.md`](./CONTRIBUTING.md) | Guía de contribución: filosofía, branching model, DevSecOps y Regla del 3 |
-| [`profile/README.md`](./profile/README.md) | Perfil público de la organización en GitHub |
-| [`.github/ISSUE_TEMPLATE/`](./.github/ISSUE_TEMPLATE/) | Templates para Issues: nuevo doc, actualización, deprecación, evidencia |
-| [`.github/pull_request_template.md`](./.github/pull_request_template.md) | Checklist obligatorio para todo Pull Request |
-| [`.github/workflows/docs-quality.yml`](./.github/workflows/docs-quality.yml) | CI: markdownlint + link-check + validación de frontmatter |
-| [`.markdownlint.yml`](./.markdownlint.yml) | Configuración de reglas de markdownlint para toda la org |
+| `CONTRIBUTING.md` | Contribution guide: philosophy, branching model, DevSecOps, and Rule of 3 |
+| `profile/README.md` | Public profile of the GitHub organization |
+| `.github/ISSUE_TEMPLATE/` | Issue templates: new doc, update, deprecation, evidence |
+| `.github/pull_request_template.md` | Mandatory checklist for all Pull Requests |
+| `.github/workflows/docs-quality.yml` | CI: markdownlint + link-check + frontmatter validation |
+| `.markdownlint.yml` | Markdownlint rules configuration for the entire org |
 
-## Repositorios de la Organización
+## Organization Repositories
 
-| Repo | Visibilidad | Propósito |
+A&C Consulting Services maintains strict access controls. The `core-*` repositories are private and restricted to authorized personnel only.
+
+| Repo | Visibility | Purpose |
 |---|---|---|
-| [`.github`](https://github.com/aicloud-consulting/.github) | Público | Gobernanza organizacional (este repo) |
-| [`core-corporate-governance`](https://github.com/aicloud-consulting/core-corporate-governance) | Privado | Documentación legal, societaria y políticas internas |
-| [`core-architecture-landscape`](https://github.com/aicloud-consulting/core-architecture-landscape) | Privado | Arquitecturas de referencia y estándares técnicos |
-| [`core-design-system`](https://github.com/aicloud-consulting/core-design-system) | Privado | Identidad corporativa y sistema de diseño |
-| [`core-developer-portal`](https://github.com/aicloud-consulting/core-developer-portal) | Privado | Portal interno: metodología, Go-to-Market y casos de éxito |
+| [`.github`](https://github.com/aicloud-consulting/.github) | Public | Organizational governance (this repository) |
+| [`core-corporate-governance`](https://github.com/aicloud-consulting/core-corporate-governance) | Private | Legal, governance, policies, and contracts |
+| [`core-architecture-landscape`](https://github.com/aicloud-consulting/core-architecture-landscape) | Private | Reference architectures, integration patterns, and runbooks |
+| [`core-design-system`](https://github.com/aicloud-consulting/core-design-system) | Private | Brand identity, design tokens, and verbal identity |
+| [`core-developer-portal`](https://github.com/aicloud-consulting/core-developer-portal) | Private | ADF methodology, Core Offers, case studies, and onboarding |
 
-## Contexto del Proyecto
+## Project Context
 
-Para entender el ADN del proyecto y el plan maestro de ejecución, ver:
-- `AI_Context/EXECUTION_CONTEXT.md` — Contexto corporativo y estratégico
-- `AI_Context/EXECUTION_CONTEXT_GITHUB.md` — Estado y gobernanza de repos
-- `AI_Context/MASTER_PLAN.md` — Plan detallado por fases
+To understand the project's DNA and the master execution plan, authorized members should refer to the internal `AI_Context` documents.
