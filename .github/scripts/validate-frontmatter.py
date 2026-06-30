@@ -2,19 +2,31 @@
 """
 Validates that all Markdown files in core-* repos have the required DaC frontmatter fields.
 Required fields: title, version, status, owner, last_review, source_doc, lang
-Skips: README.md, files in .github/, _archived/
+Skips files: README.md, CONTRIBUTING.md, adr-template.md.
+Skips dirs: .github/, _archived/, .git/, node_modules/, dist/, .astro/, _content/.
 """
 
 import os
 import sys
 import yaml
 
+# Emoji output (✅ / ❌) must not crash on non-UTF-8 consoles (e.g. Windows cp1252).
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 REQUIRED_FIELDS = ["title", "version", "status", "owner", "last_review", "source_doc", "lang"]
-VALID_STATUSES = {"draft", "approved", "superseded", "archived"}
+# Union of the content lifecycle (draft/approved/superseded/archived) and the
+# ADR lifecycle (proposed/approved/superseded/deprecated). See the A&C ADR Standard in
+# core-architecture-landscape/decision-records/README.md.
+VALID_STATUSES = {"draft", "proposed", "approved", "superseded", "deprecated", "archived"}
 VALID_LANGS = {"es-MX", "en-US"}
 
-SKIP_FILES = {"README.md", "CONTRIBUTING.md"}
-SKIP_DIRS = {".github", "_archived", ".git"}
+# README.md and CONTRIBUTING.md are org/process docs; adr-template.md is a template
+# whose frontmatter is illustrative (placeholder dates), so it is exempt from validation.
+SKIP_FILES = {"README.md", "CONTRIBUTING.md", "adr-template.md"}
+# Skip infra/governance dirs, plus dependency/build output (node_modules, dist, .astro)
+# so the validator never walks third-party or generated files.
+SKIP_DIRS = {".github", "_archived", ".git", "node_modules", "dist", ".astro", "_content"}
 
 errors = []
 

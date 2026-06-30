@@ -33,18 +33,21 @@ Closes #
 ## Mandatory Checklist
 
 ### Document Quality
+
 - [ ] YAML frontmatter is complete (`title`, `version`, `status`, `owner`, `last_review`, `source_doc`, `lang`)
 - [ ] `source_doc` field points to the original document in Google Drive (if migration)
 - [ ] `version` and `last_review` are updated relative to the previous version
 - [ ] The document is in the correct language (`es-MX` / `en-US`) or both if bilingual
 
 ### Content
+
 - [ ] No confidential client information without anonymization (NDA compliance)
 - [ ] No incomplete corporate data visible (e.g. `TBD`, `[PENDING]`) in `approved` documents
 - [ ] Tone of voice follows A&C standard ("Tough Love" technical, no restricted words)
 - [ ] Internal and external links are valid
 
 ### Process
+
 - [ ] PR has an associated Issue or a clear justification for why it does not apply
 - [ ] PR was reviewed by at least one repo Owner before requesting merge
 - [ ] Documentation quality CI (`docs-quality.yml`) passes without errors

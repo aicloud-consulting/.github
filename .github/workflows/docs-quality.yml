@@ -1,64 +1,57 @@
 name: Docs Quality
 
+# Reusable + self-triggering.
+# - Runs directly on this (.github) repo on push/PR.
+# - Can be called by any org repo via `uses: aicloud-consulting/.github/.github/workflows/docs-quality.yml@main`.
+# Shared tooling (markdownlint rules + frontmatter validator) is fetched from this public repo
+# into RUNNER_TEMP so it is never part of the linted/validated workspace.
 on:
-    pull_request:
-        branches: [main]
-        paths:
-            - "**.md"
-            - "**.yml"
-            - "**.yaml"
-    push:
-        branches: [main]
-        paths:
-            - "**.md"
+  workflow_call: {}
+  pull_request:
+    branches: [main]
+    paths: ["**.md", "**.yml", "**.yaml"]
+  push:
+    branches: [main]
+    paths: ["**.md", "**.yml", "**.yaml"]
 
 jobs:
-    markdown-lint:
-        name: Markdown Lint
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+  docs-quality:
+    name: Docs Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout content
+        uses: actions/checkout@v4
 
-            - name: Run markdownlint
-              uses: DavidAnson/markdownlint-cli2-action@v16
-              with:
-                  globs: "**/*.md"
-                  config: ".markdownlint.yml"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-    link-check:
-        name: Link Check
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-            - name: Check links
-              uses: lycheeverse/lychee-action@v1
-              with:
-                  args: >
-                      --verbose
-                      --no-progress
-                      --exclude-mail
-                      --exclude '^https://github\.com/aicloud-consulting/.*'
-                      '**/*.md'
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Python dependencies
+        run: pip install pyyaml
 
-    frontmatter-check:
-        name: Frontmatter Validation
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
+      - name: Fetch shared DaC tooling from .github (public)
+        run: |
+          base="https://raw.githubusercontent.com/aicloud-consulting/.github/main"
+          curl -fsSL "$base/.markdownlint.yml" -o "$RUNNER_TEMP/.markdownlint.yml"
+          curl -fsSL "$base/.github/scripts/validate-frontmatter.py" -o "$RUNNER_TEMP/validate-frontmatter.py"
 
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: "3.12"
+      - name: Markdown lint
+        # The caller repo's own .markdownlint-cli2.jsonc (if present) supplies `ignores`.
+        run: npx -y markdownlint-cli2 --config "$RUNNER_TEMP/.markdownlint.yml" "**/*.md"
 
-            - name: Install dependencies
-              run: pip install pyyaml
+      - name: Frontmatter validation
+        run: python "$RUNNER_TEMP/validate-frontmatter.py"
 
-            - name: Validate frontmatter
-              run: python .github/scripts/validate-frontmatter.py
+      - name: Link check
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose --no-progress --exclude-mail
+            --exclude '^https://github\.com/aicloud-consulting/.*'
+            '**/*.md'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

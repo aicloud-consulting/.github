@@ -1,0 +1,22 @@
+# CODEOWNERS — .github (organization governance)
+# This repository defines the org-wide policies, templates, and CI that apply to
+# every repository in `aicloud-consulting`. All changes require review by a
+# repository Owner before merge.
+
+# Default: Abraham owns every file in this repository
+* @personal-abrahamchavez
+
+# Public-facing organization profile
+/profile/ @personal-abrahamchavez
+
+# Contribution guide and governance
+/CONTRIBUTING.md @personal-abrahamchavez
+
+# Issue and Pull Request templates
+/.github/ISSUE_TEMPLATE/ @personal-abrahamchavez
+/.github/pull_request_template.md @personal-abrahamchavez
+
+# DaC continuous integration and tooling
+/.github/workflows/ @personal-abrahamchavez
+/.github/scripts/ @personal-abrahamchavez
+/.markdownlint.yml @personal-abrahamchavez

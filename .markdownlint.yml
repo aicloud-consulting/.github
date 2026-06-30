@@ -18,3 +18,14 @@ MD024: false
 
 # MD036 — Emphasis used as a heading: disable (used for bold labels in docs)
 MD036: false
+
+# MD060 — Table column style: disable. A&C house style uses padded pipes
+# (`| cell |`) consistently across all repos; this rule (added in newer
+# markdownlint, not present in the pinned CI action) would demand the opposite.
+MD060: false
+
+# MD025 — Single H1: every A&C content doc carries a YAML frontmatter `title:`
+# AND a body `# H1` (the visible title). Tell MD025 NOT to treat the frontmatter
+# title as a heading, so a single body H1 is valid. (Multiple body H1s still fail.)
+MD025:
+  front_matter_title: ""

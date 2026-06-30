@@ -6,11 +6,14 @@ This repository contains the policies, templates, and standards that apply to **
 
 | Artefact | Description |
 |---|---|
+| `CODEOWNERS` | Code ownership: all changes require review by a repository Owner |
 | `CONTRIBUTING.md` | Contribution guide: philosophy, branching model, DevSecOps, and Rule of 3 |
 | `profile/README.md` | Public profile of the GitHub organization |
 | `.github/ISSUE_TEMPLATE/` | Issue templates: new doc, update, deprecation, evidence |
 | `.github/pull_request_template.md` | Mandatory checklist for all Pull Requests |
 | `.github/workflows/docs-quality.yml` | CI: markdownlint + link-check + frontmatter validation |
+| `.github/scripts/validate-frontmatter.py` | Frontmatter validator invoked by the CI workflow |
+| `docs/dac-standards.md` | DaC standards: frontmatter contract, language policy, and quality gate |
 | `.markdownlint.yml` | Markdownlint rules configuration for the entire org |
 
 ## Organization Repositories
@@ -27,4 +30,4 @@ A&C Consulting Services maintains strict access controls. The `core-*` repositor
 
 ## Project Context
 
-To understand the project's DNA and the master execution plan, authorized members should refer to the internal `AI_Context` documents.
+Docs-as-Code conventions (frontmatter contract, language policy) and the documentation quality gate are defined in [`docs/dac-standards.md`](./docs/dac-standards.md).

@@ -7,6 +7,7 @@ Our working philosophy is built on **zero improvisation** and flawless technical
 ## 1. Architecture Philosophy (Zero Technical Debt)
 
 All contributed code must align with our **Enterprise Standards** principles:
+
 - **Agnostic and Modular**: We prioritize microservices-based architecture and scalable solutions.
 - **Predictable Quality**: Every change must be backed by automated unit/integration tests. We do not consider work "Done" (Definition of Done) until it passes validation and security thresholds.
 - **Efficiency**: At A&C we treat time as a critical variable. Avoid "temporary" solutions that increase technical debt.
@@ -30,6 +31,7 @@ All contributed code must align with our **Enterprise Standards** principles:
 ## 4. Deliverable Structure (The Rule of 3)
 
 Our technical communication is direct, free of visual noise, and highly executive. When documenting PRs or Issues:
+
 1. **The Context**: What problem is being solved?
 2. **The Solution**: How was it technically addressed?
 3. **The Impact/Action**: What dependencies does it affect and how to validate it?
