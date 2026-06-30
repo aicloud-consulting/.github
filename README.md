@@ -1,34 +1,45 @@
-# A&C Consulting Services — Organizational Governance Repository
+# A&C Consulting Services — Organizational Governance
 
-This repository contains the policies, templates, and standards that apply to **all repositories** within the `aicloud-consulting` organization.
+The org-wide source of truth for Docs-as-Code: the policies, templates, schemas, and CI that apply to **every repository** in `aicloud-consulting`.
 
-## Contents
+> **Visibility:** Public · **Language:** en-US · **Owner:** @personal-abrahamchavez
 
-| Artefact | Description |
+## What's here
+
+| Item | Description |
 |---|---|
-| `CODEOWNERS` | Code ownership: all changes require review by a repository Owner |
-| `CONTRIBUTING.md` | Contribution guide: philosophy, branching model, DevSecOps, and Rule of 3 |
-| `profile/README.md` | Public profile of the GitHub organization |
-| `.github/ISSUE_TEMPLATE/` | Issue templates: new doc, update, deprecation, evidence |
-| `.github/pull_request_template.md` | Mandatory checklist for all Pull Requests |
-| `.github/workflows/docs-quality.yml` | CI: markdownlint + link-check + frontmatter validation |
+| `CODEOWNERS` | Code ownership: every change requires review by a repository Owner |
+| `CONTRIBUTING.md` | Contribution guide: zero-improvisation philosophy, branching model, DevSecOps, and the Rule of 3 |
+| `.markdownlint.yml` | Org-wide markdownlint rule configuration (the single linter ruleset) |
+| `profile/README.md` | Public GitHub organization profile (mission, vision, approach, contact) |
+| `docs/dac-standards.md` | The Docs-as-Code standards: frontmatter contract, language policy, and quality gate |
+| `schemas/frontmatter.schema.json` | Universal base frontmatter contract — applies to every A&C Markdown document |
+| `schemas/case-study.schema.json` | Path-selected extension for `core-developer-portal/case-studies/` |
+| `schemas/core-offer.schema.json` | Path-selected extension for `core-developer-portal/go-to-market/` |
+| `schemas/README.md` | How the schemas compose, per-path selection, and their consumers |
+| `.github/ISSUE_TEMPLATE/` | Issue templates: new doc, update doc, deprecation, case-study/evidence request |
+| `.github/pull_request_template.md` | Mandatory PR checklist (change type + Context / Solution / Impact) |
+| `.github/workflows/docs-quality.yml` | Reusable CI quality gate: markdownlint + link-check + frontmatter validation |
 | `.github/scripts/validate-frontmatter.py` | Frontmatter validator invoked by the CI workflow |
-| `schemas/` | JSON Schema frontmatter contract (base + case-study + core-offer) — the single source of truth for validation |
-| `docs/dac-standards.md` | DaC standards: frontmatter contract, language policy, and quality gate |
-| `.markdownlint.yml` | Markdownlint rules configuration for the entire org |
 
-## Organization Repositories
+## Where else to look
 
-A&C Consulting Services maintains strict access controls. The `core-*` repositories are private and restricted to authorized personnel only.
+A&C Consulting Services maintains strict access controls. The `core-*` repositories are private and restricted to authorized personnel only. This repo defines the rules; the content lives elsewhere — check the right repo before reinventing it.
 
-| Repo | Visibility | Purpose |
+| Repo | Visibility | What it holds |
 |---|---|---|
-| [`.github`](https://github.com/aicloud-consulting/.github) | Public | Organizational governance (this repository) |
-| [`core-corporate-governance`](https://github.com/aicloud-consulting/core-corporate-governance) | Private | Legal, governance, policies, and contracts |
-| [`core-architecture-landscape`](https://github.com/aicloud-consulting/core-architecture-landscape) | Private | Reference architectures, integration patterns, and runbooks |
-| [`core-design-system`](https://github.com/aicloud-consulting/core-design-system) | Private | Brand identity, design tokens, and verbal identity |
-| [`core-developer-portal`](https://github.com/aicloud-consulting/core-developer-portal) | Private | ADF methodology, Core Offers, case studies, and onboarding |
+| [`core-design-system`](https://github.com/aicloud-consulting/core-design-system) | Private | Brand: mission, vision, tagline, story, tone of voice + vocabulary, design tokens, logo assets |
+| [`core-developer-portal`](https://github.com/aicloud-consulting/core-developer-portal) | Private | Services (7 Core Offers), 14 case studies, ADF delivery methodology, engineering standards, onboarding |
+| [`core-corporate-governance`](https://github.com/aicloud-consulting/core-corporate-governance) | Private | Legal/corporate: bylaws, term-sheet/governance, pricing & engagement models, SLAs, PMSI, BCP/DRP, MNDA/SOW, risk register |
+| [`core-architecture-landscape`](https://github.com/aicloud-consulting/core-architecture-landscape) | Private | Architecture: technical principles, reference architectures, integration patterns, runbooks, ADR standard + org register |
+| [`corporate-website`](https://github.com/aicloud-consulting/corporate-website) | Private | The public website (Astro presentation layer) |
 
-## Project Context
+## Conventions
 
-Docs-as-Code conventions (frontmatter contract, language policy) and the documentation quality gate are defined in [`docs/dac-standards.md`](./docs/dac-standards.md).
+This repo defines the org Docs-as-Code standards in [`docs/dac-standards.md`](./docs/dac-standards.md):
+
+- **Frontmatter contract.** Every content `.md` carries `title`, `status`, `owner`, `last_review`, `source_doc`, and `lang`. There is **no `version` field — Git history is the version record**, and `_vN` filename suffixes are not used. READMEs, `CONTRIBUTING.md`, issue/PR templates, and `adr-template.md` are exempt.
+- **Language policy.** Language is assigned per repo/section (technical → en-US; Mexican-legal → es-MX; commercial-for-both-markets → bilingual). This repo is en-US.
+- **Quality gate.** A single reusable workflow (`.github/workflows/docs-quality.yml`) runs markdownlint, link-check, and frontmatter validation; every repo carries a thin caller that invokes it.
+
+The three JSON Schemas in [`schemas/`](./schemas/) are the **single source of truth** for frontmatter validation — consumed mechanically by the CI validator and by the `corporate-website` build. Nobody re-types the field rules.
