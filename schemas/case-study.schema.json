@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aicloud-consulting/schemas/case-study/1.0",
+  "title": "A&C Case Study Frontmatter",
+  "description": "Extends the base contract with the display metadata the corporate website needs to render case-study cards and detail pages. Applies to documents under core-developer-portal/case-studies/. This file is the single source of truth: the org CI validator enforces it on those paths, and the website derives its Zod schema from it (no divergence).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "version",
+    "status",
+    "owner",
+    "last_review",
+    "source_doc",
+    "lang",
+    "summary",
+    "sector",
+    "scale"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Case-study title used as the card and page heading."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "MAJOR.MINOR document version, e.g. \"1.0\"."
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "proposed",
+        "approved",
+        "superseded",
+        "deprecated",
+        "archived"
+      ],
+      "description": "Lifecycle state. Only 'approved' documents are published to the public site; all others are checked out but excluded from the build."
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Accountable owner (GitHub handle or role)."
+    },
+    "last_review": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last review, ISO 8601 (YYYY-MM-DD)."
+    },
+    "source_doc": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Provenance of the content (origin document, note, or generation method)."
+    },
+    "lang": {
+      "enum": [
+        "es-MX",
+        "en-US"
+      ],
+      "description": "Primary language of the document; drives the site's i18n routing (/es, /en)."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 280,
+      "description": "One- or two-line teaser shown on cards and used as the page meta description."
+    },
+    "sector": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Client industry, e.g. \"Construction Materials\". Always anonymized — never a client name."
+    },
+    "scale": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Scope/scale indicator, e.g. \"Global - 600+ plants\" or \"National - 8M users\"."
+    },
+    "region": {
+      "type": "string",
+      "description": "Geographic scope, e.g. \"LATAM\", \"Multi-region\", \"Global\"."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Technology / theme chips, e.g. [\"Azure\", \"SAP BTP\", \"Zero Trust\"]."
+    },
+    "hero_image": {
+      "type": "string",
+      "description": "Path or key to an abstract, NDA-safe sector visual. Never a client photo or logo."
+    },
+    "featured": {
+      "type": "boolean",
+      "description": "Promote this case study on the homepage."
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Explicit display order within listings (lower appears first)."
+    },
+    "case_id": {
+      "type": "string",
+      "pattern": "^[0-9]{2}$",
+      "description": "Stable two-digit id (e.g. \"01\") linking the es-MX and en-US versions of the same case study."
+    }
+  }
+}

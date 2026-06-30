@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aicloud-consulting/schemas/frontmatter/1.0",
+  "title": "A&C Base Frontmatter",
+  "description": "The universal documentation contract: the seven fields every A&C Markdown document must carry. Specialized, publishable content types (case studies, core offers) extend this contract with their own schema; see case-study.schema.json and core-offer.schema.json. This file is the single source of truth consumed by the org CI validator (validate-frontmatter.py) and, transitively, by the website build.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "version",
+    "status",
+    "owner",
+    "last_review",
+    "source_doc",
+    "lang"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable document title."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "MAJOR.MINOR document version, e.g. \"1.0\"."
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "proposed",
+        "approved",
+        "superseded",
+        "deprecated",
+        "archived"
+      ],
+      "description": "Lifecycle state. Union of the content lifecycle (draft -> approved -> superseded -> archived) and the ADR lifecycle (proposed -> approved -> superseded -> deprecated), so one contract validates both content docs and ADRs."
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Accountable owner (GitHub handle or role)."
+    },
+    "last_review": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last review, ISO 8601 (YYYY-MM-DD)."
+    },
+    "source_doc": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Provenance of the content (origin document, note, or generation method)."
+    },
+    "lang": {
+      "enum": [
+        "es-MX",
+        "en-US"
+      ],
+      "description": "Primary language of the document."
+    }
+  }
+}
