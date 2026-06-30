@@ -9,7 +9,7 @@ content types:
 
     .../case-studies/...  -> case-study.schema.json   (base + display metadata)
     .../go-to-market/...  -> core-offer.schema.json    (base + display metadata)
-    everything else       -> frontmatter.schema.json   (the universal 7-field base)
+    everything else       -> frontmatter.schema.json   (the universal 6-field base)
 
 Skips files: README.md, CONTRIBUTING.md, adr-template.md.
 Skips dirs:  .github, _archived, .git, node_modules, dist, .astro, _content.
