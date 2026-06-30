@@ -1,6 +1,5 @@
 ---
 title: "Frontmatter Schemas — The Content Contract"
-version: "1.0"
 status: "approved"
 owner: "personal-abrahamchavez"
 last_review: "2026-06-30"
@@ -22,11 +21,11 @@ A&C's content (in `core-*` repos) to its consumers (the org CI validator and the
 
 | File | `$id` | Applies to |
 | :--- | :--- | :--- |
-| `frontmatter.schema.json` | `…/frontmatter/1.0` | **Every** A&C Markdown document (the universal 7-field base). |
+| `frontmatter.schema.json` | `…/frontmatter/1.0` | **Every** A&C Markdown document (the universal base — the required fields). |
 | `case-study.schema.json` | `…/case-study/1.0` | Documents under `core-developer-portal/case-studies/`. Base + display metadata. |
 | `core-offer.schema.json` | `…/core-offer/1.0` | Documents under `core-developer-portal/go-to-market/`. Base + display metadata. |
 
-The specialized schemas are **self-contained** (they restate the seven base properties rather
+The specialized schemas are **self-contained** (they restate the base properties rather
 than `$ref`-compose them). This is deliberate: `additionalProperties: false` does not compose
 cleanly through `allOf`, and the self-contained form is what both the Python `jsonschema`
 validator and the JSON-Schema→Zod generator handle without edge cases. The base field *rules*

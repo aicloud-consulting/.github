@@ -13,6 +13,7 @@ This repository contains the policies, templates, and standards that apply to **
 | `.github/pull_request_template.md` | Mandatory checklist for all Pull Requests |
 | `.github/workflows/docs-quality.yml` | CI: markdownlint + link-check + frontmatter validation |
 | `.github/scripts/validate-frontmatter.py` | Frontmatter validator invoked by the CI workflow |
+| `schemas/` | JSON Schema frontmatter contract (base + case-study + core-offer) — the single source of truth for validation |
 | `docs/dac-standards.md` | DaC standards: frontmatter contract, language policy, and quality gate |
 | `.markdownlint.yml` | Markdownlint rules configuration for the entire org |
 

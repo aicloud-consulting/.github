@@ -1,6 +1,5 @@
 ---
 title: "A&C Docs-as-Code Standards"
-version: "1.0"
 status: "approved"
 owner: "personal-abrahamchavez"
 last_review: "2026-06-30"
@@ -24,7 +23,6 @@ Every content `.md` document must begin with a YAML frontmatter block containing
 ```yaml
 ---
 title: ""
-version: "1.0"            # X.Y
 status: "approved"        # draft | proposed | approved | superseded | deprecated | archived
 owner: ""                 # GitHub login of the responsible owner
 last_review: "YYYY-MM-DD"
@@ -34,8 +32,9 @@ lang: "en-US"             # es-MX | en-US
 ```
 
 - **Status vocabulary** is the union of the content lifecycle (`draft → approved → superseded → archived`) and the ADR lifecycle (`proposed → approved → superseded → deprecated`). See the [ADR Standard](https://github.com/aicloud-consulting/core-architecture-landscape/blob/main/decision-records/README.md) for which states apply to which artifact.
+- **No `version` field.** Change history is Git's job — frontmatter does not carry a document version number. `status` (lifecycle) and `last_review` (freshness) are the only state fields.
 - **Exempt** (no frontmatter required): `README.md`, `CONTRIBUTING.md`, issue/PR templates, and `adr-template.md`.
-- A machine-readable **JSON Schema** is the planned single source of truth (`.github/schemas/frontmatter.schema.json`); see [ADR-002](https://github.com/aicloud-consulting/corporate-website/blob/main/docs/adr/ADR-002-Build-Deploy-Pipeline.md). Until then, `validate-frontmatter.py` enforces the rules above.
+- A machine-readable **JSON Schema is the single source of truth**: `.github/schemas/` holds `frontmatter.schema.json` (base) plus `case-study.schema.json` and `core-offer.schema.json` (path-selected extensions). `validate-frontmatter.py` validates against them with the `jsonschema` library. See [ADR-002](https://github.com/aicloud-consulting/corporate-website/blob/main/docs/adr/ADR-002-Build-Deploy-Pipeline.md).
 
 ---
 

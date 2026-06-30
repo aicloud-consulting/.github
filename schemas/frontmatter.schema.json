@@ -2,12 +2,11 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aicloud-consulting/schemas/frontmatter/1.0",
   "title": "A&C Base Frontmatter",
-  "description": "The universal documentation contract: the seven fields every A&C Markdown document must carry. Specialized, publishable content types (case studies, core offers) extend this contract with their own schema; see case-study.schema.json and core-offer.schema.json. This file is the single source of truth consumed by the org CI validator (validate-frontmatter.py) and, transitively, by the website build.",
+  "description": "The universal documentation contract: the required fields every A&C Markdown document must carry. Specialized, publishable content types (case studies, core offers) extend this contract with their own schema; see case-study.schema.json and core-offer.schema.json. This file is the single source of truth consumed by the org CI validator (validate-frontmatter.py) and, transitively, by the website build.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "title",
-    "version",
     "status",
     "owner",
     "last_review",
@@ -19,11 +18,6 @@
       "type": "string",
       "minLength": 1,
       "description": "Human-readable document title."
-    },
-    "version": {
-      "type": "string",
-      "pattern": "^[0-9]+\\.[0-9]+$",
-      "description": "MAJOR.MINOR document version, e.g. \"1.0\"."
     },
     "status": {
       "enum": [

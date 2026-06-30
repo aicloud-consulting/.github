@@ -7,7 +7,6 @@
   "additionalProperties": false,
   "required": [
     "title",
-    "version",
     "status",
     "owner",
     "last_review",
@@ -22,11 +21,6 @@
       "type": "string",
       "minLength": 1,
       "description": "Case-study title used as the card and page heading."
-    },
-    "version": {
-      "type": "string",
-      "pattern": "^[0-9]+\\.[0-9]+$",
-      "description": "MAJOR.MINOR document version, e.g. \"1.0\"."
     },
     "status": {
       "enum": [
