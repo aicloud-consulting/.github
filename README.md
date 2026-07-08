@@ -3,7 +3,7 @@
 The org-wide source of truth for Docs-as-Code: the policies, templates, schemas, and CI that apply to **every repository** in `aicloud-consulting`.
 
 > **Visibility:** Public · **Language:** en-US · **Owner:** @personal-abrahamchavez
-
+>
 > **Brand architecture — Group / Member.** **A&C Consulting Services** is the **group** (legal entity / holding); its public-facing commercial brand is **Ficentia** ([ficentia.com](https://ficentia.com)) under an endorsed model (*"Ficentia, a brand of A&C Consulting Services"*). Brand specs live in [`core-design-system`](https://github.com/aicloud-consulting/core-design-system).
 
 ## What's here
