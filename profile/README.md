@@ -8,6 +8,8 @@ A slow solution is a failed solution. That is why our philosophy is one of **zer
 
 We are not just developers; we are architects of operational efficiency. We combine the rigor of corporate consulting with technical precision to ensure that the time variable always plays in favor of your business.
 
+> **Ficentia** is our commercial brand — **[ficentia.com](https://ficentia.com)** — a brand of the **A&C Consulting Services** group.
+
 ---
 
 ## 🎯 Mission
