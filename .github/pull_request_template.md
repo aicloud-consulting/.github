@@ -34,9 +34,9 @@ Closes #
 
 ### Document Quality
 
-- [ ] YAML frontmatter is complete (`title`, `version`, `status`, `owner`, `last_review`, `source_doc`, `lang`)
+- [ ] YAML frontmatter is complete (`title`, `status`, `owner`, `last_review`, `source_doc`, `lang`)
 - [ ] `source_doc` field points to the original document in Google Drive (if migration)
-- [ ] `version` and `last_review` are updated relative to the previous version
+- [ ] `last_review` is updated to today's date (Git history is the version record — there is no `version` field)
 - [ ] The document is in the correct language (`es-MX` / `en-US`) or both if bilingual
 
 ### Content

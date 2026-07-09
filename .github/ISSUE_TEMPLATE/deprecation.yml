@@ -14,7 +14,7 @@ body:
     id: doc_path
     attributes:
       label: "Path of the document to deprecate"
-      placeholder: "e.g. target-repo/folder/document-name-v1.md"
+      placeholder: "e.g. target-repo/folder/document-name.md"
     validations:
       required: true
 
@@ -33,7 +33,7 @@ body:
     id: replacement
     attributes:
       label: "Replacement Document (if applicable)"
-      placeholder: "e.g. target-repo/folder/document-name-v2.md"
+      placeholder: "e.g. target-repo/folder/replacement-document.md"
 
   - type: textarea
     id: reason

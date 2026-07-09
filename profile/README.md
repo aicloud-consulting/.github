@@ -8,8 +8,6 @@ A slow solution is a failed solution. That is why our philosophy is one of **zer
 
 We are not just developers; we are architects of operational efficiency. We combine the rigor of corporate consulting with technical precision to ensure that the time variable always plays in favor of your business.
 
-> **Ficentia** is our commercial brand — **[ficentia.com](https://ficentia.com)** — a brand of the **A&C Consulting Services** group.
-
 ---
 
 ## 🎯 Mission
@@ -28,6 +26,12 @@ To be the definitive standard of efficiency and profitability in B2B technology 
 - **Zero Technical Debt**: We design under the **MACH** standard (Microservices based, API-first, Cloud-native SaaS, Headless) and Enterprise Integration Architecture.
 - **Security by Design (DevSecOps)**: Rigorous governance of data and AI at every layer of the ecosystem.
 - **Continuous Evolution**: From reaction to prediction through **AIOps** and Zero-Touch Operations.
+
+---
+
+## 🟠 Ficentia — our commercial brand
+
+**Ficentia** (`ficentia.com`) is the commercial brand under which the group goes to market — the public face for our services, case studies, and proposals. It is an **endorsed brand of the A&C Consulting Services group** (*"Ficentia, a brand of A&C Consulting Services"*): A&C remains the legal entity / group and endorser, while Ficentia is the brand clients engage with. Future member brands may join the group under the same endorsed model.
 
 ---
 

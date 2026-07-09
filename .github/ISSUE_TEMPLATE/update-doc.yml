@@ -14,23 +14,7 @@ body:
     id: doc_path
     attributes:
       label: "Path of the document to update"
-      placeholder: "e.g. core-corporate-governance/policies/pmsi_v1.md"
-    validations:
-      required: true
-
-  - type: input
-    id: current_version
-    attributes:
-      label: "Current document version"
-      placeholder: "e.g. 1.0"
-    validations:
-      required: true
-
-  - type: input
-    id: new_version
-    attributes:
-      label: "Proposed new version"
-      placeholder: "e.g. 1.1"
+      placeholder: "e.g. core-corporate-governance/policies/pmsi.md"
     validations:
       required: true
 
@@ -70,8 +54,6 @@ body:
     attributes:
       label: "Checklist"
       options:
-        - label: "The `version` field in the frontmatter will be updated."
-          required: true
         - label: "The `last_review` field in the frontmatter will be updated to today's date."
           required: true
         - label: "Dependent documents have been notified or updated."
