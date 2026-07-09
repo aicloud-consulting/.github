@@ -53,8 +53,10 @@ jobs:
       - name: Link check
         uses: lycheeverse/lychee-action@v2
         with:
+          # lychee >=0.15 does not check mail links by default, so the old
+          # `--exclude-mail` flag was removed and now errors as an unknown arg.
           args: >-
-            --verbose --no-progress --exclude-mail
+            --verbose --no-progress
             --exclude '^https://github\.com/aicloud-consulting/.*'
             '**/*.md'
         env:
