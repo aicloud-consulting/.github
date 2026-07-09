@@ -36,11 +36,13 @@ jobs:
       - name: Fetch shared DaC tooling from .github (public)
         run: |
           base="https://raw.githubusercontent.com/aicloud-consulting/.github/main"
-          curl -fsSL "$base/.markdownlint.yml" -o "$RUNNER_TEMP/.markdownlint.yml"
-          curl -fsSL "$base/.github/scripts/validate-frontmatter.py" -o "$RUNNER_TEMP/validate-frontmatter.py"
+          # Retry so a transient raw.githubusercontent.com blip does not fail the whole gate.
+          retry="--retry 5 --retry-delay 2 --retry-all-errors"
+          curl -fsSL $retry "$base/.markdownlint.yml" -o "$RUNNER_TEMP/.markdownlint.yml"
+          curl -fsSL $retry "$base/.github/scripts/validate-frontmatter.py" -o "$RUNNER_TEMP/validate-frontmatter.py"
           mkdir -p "$RUNNER_TEMP/schemas"
           for s in frontmatter.schema.json case-study.schema.json core-offer.schema.json; do
-            curl -fsSL "$base/schemas/$s" -o "$RUNNER_TEMP/schemas/$s"
+            curl -fsSL $retry "$base/schemas/$s" -o "$RUNNER_TEMP/schemas/$s"
           done
 
       - name: Markdown lint
