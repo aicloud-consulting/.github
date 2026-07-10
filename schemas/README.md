@@ -3,7 +3,7 @@ title: "Frontmatter Schemas — The Content Contract"
 status: "approved"
 owner: "personal-abrahamchavez"
 last_review: "2026-06-30"
-source_doc: "Implements ADR-001/ADR-002 (corporate-website) D4"
+source_doc: "Implements ADR-001/ADR-002 (ficentia-corporate-website) D4"
 lang: "en-US"
 ---
 
@@ -11,7 +11,7 @@ lang: "en-US"
 
 This directory holds the **single source of truth** for the frontmatter contract that binds
 A&C's content (in `core-*` repos) to its consumers (the org CI validator and the
-`corporate-website` build). It is the concrete realization of ADR-002, decision **D4**.
+`ficentia-corporate-website` build). It is the concrete realization of ADR-002, decision **D4**.
 
 > **Principle:** the contract is defined **once**, here, and **mechanically consumed** by every
 > party. Nobody re-types field rules. A breaking change is a single, versioned edit (bump the
@@ -47,7 +47,7 @@ everything else                          -> frontmatter.schema.json (base)
 1. **Org CI — `validate-frontmatter.py`** (runs in `docs-quality.yml` on every PR):
    validates each document against its path-selected schema using the `jsonschema` library.
    Invalid frontmatter fails the PR **before** merge.
-2. **Website build — `corporate-website`** (after ADR-002 ratification): a `schema:gen` step
+2. **Website build — `ficentia-corporate-website`** (after ADR-002 ratification): a `schema:gen` step
    derives Zod schemas from `case-study.schema.json` / `core-offer.schema.json` so Astro
    Content Collections validate the same contract at build time (fail-fast). A staleness check
    keeps the generated Zod and these JSON Schemas in lock-step.

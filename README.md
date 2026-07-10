@@ -34,7 +34,7 @@ A&C Consulting Services maintains strict access controls. The `core-*` repositor
 | [`core-developer-portal`](https://github.com/aicloud-consulting/core-developer-portal) | Private | Services (7 Core Offers), 14 case studies, ADF delivery methodology, engineering standards, onboarding |
 | [`core-corporate-governance`](https://github.com/aicloud-consulting/core-corporate-governance) | Private | Legal/corporate: bylaws, term-sheet/governance, pricing & engagement models, SLAs, PMSI, BCP/DRP, MNDA/SOW, risk register |
 | [`core-architecture-landscape`](https://github.com/aicloud-consulting/core-architecture-landscape) | Private | Architecture: technical principles, reference architectures, integration patterns, runbooks, ADR standard + org register |
-| [`corporate-website`](https://github.com/aicloud-consulting/corporate-website) | Private | The public website (Astro presentation layer) |
+| [`ficentia-corporate-website`](https://github.com/aicloud-consulting/ficentia-corporate-website) | Private | The public website (Astro presentation layer) |
 
 ## Conventions
 
@@ -44,4 +44,4 @@ This repo defines the org Docs-as-Code standards in [`docs/dac-standards.md`](./
 - **Language policy.** Language is assigned per repo/section (technical → en-US; Mexican-legal → es-MX; commercial-for-both-markets → bilingual). This repo is en-US.
 - **Quality gate.** A single reusable workflow (`.github/workflows/docs-quality.yml`) runs markdownlint, link-check, and frontmatter validation; every repo carries a thin caller that invokes it.
 
-The three JSON Schemas in [`schemas/`](./schemas/) are the **single source of truth** for frontmatter validation — consumed mechanically by the CI validator and by the `corporate-website` build. Nobody re-types the field rules.
+The three JSON Schemas in [`schemas/`](./schemas/) are the **single source of truth** for frontmatter validation — consumed mechanically by the CI validator and by the `ficentia-corporate-website` build. Nobody re-types the field rules.

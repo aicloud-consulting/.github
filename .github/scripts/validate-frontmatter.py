@@ -2,7 +2,7 @@
 """
 Validate the frontmatter of every Markdown file in an A&C repo against the shared JSON Schema
 contract — the single source of truth in `.github/schemas/`. See `.github/schemas/README.md`
-and ADR-002 (corporate-website, decision D4).
+and ADR-002 (ficentia-corporate-website, decision D4).
 
 The schema is selected by path so the same tool validates both generic docs and the publishable
 content types:
