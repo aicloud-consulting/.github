@@ -37,6 +37,8 @@ To be the definitive standard of efficiency and profitability in B2B technology 
 
 ## 📬 Contact
 
+- **Web:** <https://www.ficentia.com>
+- **Email:** [contact@ficentia.com](mailto:contact@ficentia.com)
 - **Sales & Info:** +52 22 2358 5070 | +52 81 1578 3842
 - **Address:** Calle Fresno No. 104, Col. Sierra Nogal, C.P. 37293, León, Gto., México.
 
