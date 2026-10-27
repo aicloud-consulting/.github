@@ -2,7 +2,7 @@
 title: "A&C Docs-as-Code Standards"
 status: "approved"
 owner: "personal-abrahamchavez"
-last_review: "2026-06-30"
+last_review: "2026-10-27"
 source_doc: "Organization governance (born-digital)"
 lang: "en-US"
 ---
@@ -34,7 +34,8 @@ lang: "en-US"             # es-MX | en-US
 - **Status vocabulary** is the union of the content lifecycle (`draft → approved → superseded → archived`) and the ADR lifecycle (`proposed → approved → superseded → deprecated`). See the [ADR Standard](https://github.com/aicloud-consulting/core-architecture-landscape/blob/main/decision-records/README.md) for which states apply to which artifact.
 - **No `version` field.** Change history is Git's job — frontmatter does not carry a document version number. `status` (lifecycle) and `last_review` (freshness) are the only state fields.
 - **Exempt** (no frontmatter required): `README.md`, `CONTRIBUTING.md`, issue/PR templates, and `adr-template.md`.
-- A machine-readable **JSON Schema is the single source of truth**: `.github/schemas/` holds `frontmatter.schema.json` (base) plus `case-study.schema.json` and `core-offer.schema.json` (path-selected extensions). `validate-frontmatter.py` validates against them with the `jsonschema` library. See [ADR-002](https://github.com/aicloud-consulting/ficentia-corporate-website/blob/main/docs/adr/ADR-002-Build-Deploy-Pipeline.md).
+- **Agent Skills are not documents:** a `SKILL.md` carries the open Agent Skills frontmatter (`name`, `description`, and the format's optional fields) instead of this contract, so assistants can load it unchanged. Its `name` must equal the skill's folder name.
+- A machine-readable **JSON Schema is the single source of truth**: `.github/schemas/` holds `frontmatter.schema.json` (base) plus `case-study.schema.json` and `core-offer.schema.json` (path-selected extensions) and `agent-skill.schema.json` (for every `SKILL.md`). `validate-frontmatter.py` validates against them with the `jsonschema` library. See [ADR-002](https://github.com/aicloud-consulting/ficentia-corporate-website/blob/main/docs/adr/ADR-002-Build-Deploy-Pipeline.md).
 
 ---
 
@@ -51,6 +52,9 @@ Derived from A&C's verbal-identity manual (Strategic Bilingualism). **Mandatory*
 | `core-developer-portal` — `go-to-market`, `case-studies` | **Bilingual** (es-MX + en-US) | Commercial artifacts targeting Mexican and international/nearshoring markets |
 | `.github` — all | **en-US** | Technical org-governance repository |
 | `ficentia-corporate-website` — all | **en-US** | Technical presentation layer (content is sourced bilingually at build time) |
+| `core-incubator` — an idea while it is being refined | **es-MX or en-US**, declared per document in `lang` | An idea is drafted in the language it was conceived in; translating before it is validated is waste |
+| `core-incubator` — an idea approved for development | **en-US**, except Mexican legal documents (**es-MX**) | Everything that goes to development is technical and must be in English, translated before the idea graduates to its own repo; Mexican law stays in Spanish |
+| `core-ai-skills` — all | **en-US** | Organization-agnostic engineering standards loaded by AI assistants |
 
 > **Documented exceptions:** a repo's commercial/Procurement artifacts may be bilingual even inside an es-MX repo (e.g., `core-corporate-governance/procurement/narrativa-financiera-enterprise`). When in doubt: *technical → English; legal/Mexican-market → Spanish; commercial-for-both-markets → bilingual.*
 

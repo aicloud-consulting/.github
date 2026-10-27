@@ -4,9 +4,10 @@ Validate the frontmatter of every Markdown file in an A&C repo against the share
 contract — the single source of truth in `.github/schemas/`. See `.github/schemas/README.md`
 and ADR-002 (ficentia-corporate-website, decision D4).
 
-The schema is selected by path so the same tool validates both generic docs and the publishable
-content types:
+The schema is selected by path so the same tool validates generic docs, the publishable content
+types and Agent Skills:
 
+    .../SKILL.md          -> agent-skill.schema.json   (Agent Skills format; name must equal its folder)
     .../case-studies/...  -> case-study.schema.json   (base + display metadata)
     .../go-to-market/...  -> core-offer.schema.json    (base + display metadata)
     everything else       -> frontmatter.schema.json   (the universal 6-field base)
@@ -46,6 +47,8 @@ SKIP_DIRS = {".github", "_archived", ".git", "node_modules", "dist", ".astro", "
 BASE_SCHEMA = "frontmatter.schema.json"
 CASE_STUDY_SCHEMA = "case-study.schema.json"
 CORE_OFFER_SCHEMA = "core-offer.schema.json"
+SKILL_SCHEMA = "agent-skill.schema.json"
+SKILL_FILE = "SKILL.md"
 
 
 def resolve_schema_dir(cli_dir):
@@ -60,7 +63,12 @@ def resolve_schema_dir(cli_dir):
 
 def load_validators(schema_dir):
     validators = {}
-    for key, fname in (("base", BASE_SCHEMA), ("case", CASE_STUDY_SCHEMA), ("offer", CORE_OFFER_SCHEMA)):
+    for key, fname in (
+        ("base", BASE_SCHEMA),
+        ("case", CASE_STUDY_SCHEMA),
+        ("offer", CORE_OFFER_SCHEMA),
+        ("skill", SKILL_SCHEMA),
+    ):
         path = schema_dir / fname
         if not path.exists():
             sys.stderr.write(f"ERROR: schema not found: {path}\n")
@@ -71,7 +79,10 @@ def load_validators(schema_dir):
 
 
 def schema_key_for(filepath):
-    parts = Path(filepath).parts
+    path = Path(filepath)
+    if path.name == SKILL_FILE:
+        return "skill"
+    parts = path.parts
     if "case-studies" in parts:
         return "case"
     if "go-to-market" in parts:
@@ -98,10 +109,16 @@ def check_file(filepath, validators, errors):
         errors.append(f"[EMPTY FRONTMATTER] {filepath}")
         return
 
-    validator = validators[schema_key_for(filepath)]
+    key = schema_key_for(filepath)
+    validator = validators[key]
     for verr in sorted(validator.iter_errors(fm), key=lambda e: list(e.path)):
         loc = ".".join(str(p) for p in verr.path) or "(root)"
         errors.append(f"[SCHEMA] {filepath} :: {loc}: {verr.message}")
+
+    # JSON Schema cannot compare a value with the file's location: a skill's name must equal its folder.
+    folder = Path(filepath).resolve().parent.name
+    if key == "skill" and isinstance(fm.get("name"), str) and fm["name"] != folder:
+        errors.append(f"[SKILL NAME] {filepath} :: name '{fm['name']}' must equal its folder name '{folder}'")
 
 
 def main():
