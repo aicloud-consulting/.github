@@ -35,7 +35,8 @@ lang: "en-US"             # es-MX | en-US
 - **No `version` field.** Change history is Git's job — frontmatter does not carry a document version number. `status` (lifecycle) and `last_review` (freshness) are the only state fields.
 - **Exempt** (no frontmatter required): `README.md`, `CONTRIBUTING.md`, issue/PR templates, and `adr-template.md`.
 - **Agent Skills are not documents:** a `SKILL.md` carries the open Agent Skills frontmatter (`name`, `description`, and the format's optional fields) instead of this contract, so assistants can load it unchanged. Its `name` must equal the skill's folder name.
-- A machine-readable **JSON Schema is the single source of truth**: `.github/schemas/` holds `frontmatter.schema.json` (base) plus `case-study.schema.json` and `core-offer.schema.json` (path-selected extensions) and `agent-skill.schema.json` (for every `SKILL.md`). `validate-frontmatter.py` validates against them with the `jsonschema` library. See [ADR-002](https://github.com/aicloud-consulting/ficentia-corporate-website/blob/main/docs/adr/ADR-002-Build-Deploy-Pipeline.md).
+- **Marp slide decks are documents with rendering directives:** a deck (frontmatter with `marp: true`) carries the six fields above plus Marp's documented directives (`theme`, `paginate`, `size`, `footer`…), validated by `marp-deck.schema.json`; any other key is still rejected.
+- A machine-readable **JSON Schema is the single source of truth**: `.github/schemas/` holds `frontmatter.schema.json` (base) plus `case-study.schema.json` and `core-offer.schema.json` (path-selected extensions) `agent-skill.schema.json` (for every `SKILL.md`) and `marp-deck.schema.json` (for every Marp deck). `validate-frontmatter.py` validates against them with the `jsonschema` library. See [ADR-002](https://github.com/aicloud-consulting/ficentia-corporate-website/blob/main/docs/adr/ADR-002-Build-Deploy-Pipeline.md).
 
 ---
 
