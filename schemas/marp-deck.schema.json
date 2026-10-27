@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aicloud-consulting/schemas/marp-deck/1.0",
+  "title": "A&C Marp Deck Frontmatter",
+  "description": "The frontmatter of a Markdown slide deck rendered with Marp (a document whose frontmatter has marp: true). A deck is still an A&C document, so it carries the six base fields with the same rules as frontmatter.schema.json (which stays authoritative for them), plus Marp's documented directives, which the base contract would reject. Any other key is rejected.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "status",
+    "owner",
+    "last_review",
+    "source_doc",
+    "lang",
+    "marp"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable document title (also the HTML title Marp CLI renders)."
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "proposed",
+        "approved",
+        "superseded",
+        "deprecated",
+        "archived"
+      ],
+      "description": "Lifecycle state, as in the base contract."
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Accountable owner (GitHub handle or role)."
+    },
+    "last_review": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of last review, ISO 8601 (YYYY-MM-DD)."
+    },
+    "source_doc": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Provenance of the content."
+    },
+    "lang": {
+      "enum": [
+        "es-MX",
+        "en-US"
+      ],
+      "description": "Primary language of the document (also Marp Core's lang directive)."
+    },
+    "marp": {
+      "const": true,
+      "description": "Marks the file as a Marp deck (required by Marp for VS Code); it is what selects this schema."
+    },
+    "theme": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Marpit global directive: the theme."
+    },
+    "style": {
+      "type": "string",
+      "description": "Marpit global directive: additional CSS."
+    },
+    "headingDivider": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          }
+        }
+      ],
+      "description": "Marpit global directive: split slides at these heading levels."
+    },
+    "size": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Marp Core global directive: the slide size preset (e.g. 16:9)."
+    },
+    "math": {
+      "enum": [
+        "katex",
+        "mathjax"
+      ],
+      "description": "Marp Core global directive: the math typesetting library."
+    },
+    "paginate": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "enum": [
+            "skip",
+            "hold"
+          ]
+        }
+      ],
+      "description": "Marpit directive: show the page number."
+    },
+    "header": {
+      "type": "string",
+      "description": "Marpit directive: the slide header."
+    },
+    "footer": {
+      "type": "string",
+      "description": "Marpit directive: the slide footer."
+    },
+    "class": {
+      "type": "string",
+      "description": "Marpit directive: CSS classes for the slides."
+    },
+    "backgroundColor": {
+      "type": "string",
+      "description": "Marpit directive."
+    },
+    "backgroundImage": {
+      "type": "string",
+      "description": "Marpit directive."
+    },
+    "backgroundPosition": {
+      "type": "string",
+      "description": "Marpit directive."
+    },
+    "backgroundRepeat": {
+      "type": "string",
+      "description": "Marpit directive."
+    },
+    "backgroundSize": {
+      "type": "string",
+      "description": "Marpit directive."
+    },
+    "color": {
+      "type": "string",
+      "description": "Marpit directive: the text color."
+    },
+    "transition": {
+      "type": "string",
+      "description": "Marp CLI directive: the slide transition of the bespoke template."
+    },
+    "description": {
+      "type": "string",
+      "description": "Marp CLI metadata: the HTML meta description."
+    },
+    "author": {
+      "type": "string",
+      "description": "Marp CLI metadata: the author."
+    },
+    "keywords": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Marp CLI metadata: keywords."
+    },
+    "url": {
+      "type": "string",
+      "description": "Marp CLI metadata: the canonical URL."
+    },
+    "image": {
+      "type": "string",
+      "description": "Marp CLI metadata: the Open Graph image."
+    }
+  }
+}
