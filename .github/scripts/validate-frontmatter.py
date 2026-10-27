@@ -4,10 +4,11 @@ Validate the frontmatter of every Markdown file in an A&C repo against the share
 contract — the single source of truth in `.github/schemas/`. See `.github/schemas/README.md`
 and ADR-002 (ficentia-corporate-website, decision D4).
 
-The schema is selected by path so the same tool validates generic docs, the publishable content
-types and Agent Skills:
+The schema is selected by file name, content or path, in this order, so the same tool validates
+generic docs, the publishable content types, Agent Skills and Marp decks:
 
     .../SKILL.md          -> agent-skill.schema.json   (Agent Skills format; name must equal its folder)
+    marp: true            -> marp-deck.schema.json     (base + Marp directives)
     .../case-studies/...  -> case-study.schema.json   (base + display metadata)
     .../go-to-market/...  -> core-offer.schema.json    (base + display metadata)
     everything else       -> frontmatter.schema.json   (the universal 6-field base)
@@ -48,6 +49,7 @@ BASE_SCHEMA = "frontmatter.schema.json"
 CASE_STUDY_SCHEMA = "case-study.schema.json"
 CORE_OFFER_SCHEMA = "core-offer.schema.json"
 SKILL_SCHEMA = "agent-skill.schema.json"
+DECK_SCHEMA = "marp-deck.schema.json"
 SKILL_FILE = "SKILL.md"
 
 
@@ -68,6 +70,7 @@ def load_validators(schema_dir):
         ("case", CASE_STUDY_SCHEMA),
         ("offer", CORE_OFFER_SCHEMA),
         ("skill", SKILL_SCHEMA),
+        ("deck", DECK_SCHEMA),
     ):
         path = schema_dir / fname
         if not path.exists():
@@ -78,10 +81,12 @@ def load_validators(schema_dir):
     return validators
 
 
-def schema_key_for(filepath):
+def schema_key_for(filepath, fm):
     path = Path(filepath)
     if path.name == SKILL_FILE:
         return "skill"
+    if fm.get("marp") is True:
+        return "deck"
     parts = path.parts
     if "case-studies" in parts:
         return "case"
@@ -109,7 +114,7 @@ def check_file(filepath, validators, errors):
         errors.append(f"[EMPTY FRONTMATTER] {filepath}")
         return
 
-    key = schema_key_for(filepath)
+    key = schema_key_for(filepath, fm)
     validator = validators[key]
     for verr in sorted(validator.iter_errors(fm), key=lambda e: list(e.path)):
         loc = ".".join(str(p) for p in verr.path) or "(root)"
@@ -119,6 +124,10 @@ def check_file(filepath, validators, errors):
     folder = Path(filepath).resolve().parent.name
     if key == "skill" and isinstance(fm.get("name"), str) and fm["name"] != folder:
         errors.append(f"[SKILL NAME] {filepath} :: name '{fm['name']}' must equal its folder name '{folder}'")
+
+    # YAML 1.1 reads an unquoted 16:9 as the sexagesimal number 969; Marp (YAML 1.2) reads it as text.
+    if key == "deck" and isinstance(fm.get("size"), int):
+        errors.append(f"[DECK SIZE] {filepath} :: quote the size, e.g. size: \"16:9\" (unquoted, YAML reads it as the number {fm['size']})")
 
 
 def main():

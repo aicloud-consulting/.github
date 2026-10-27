@@ -25,6 +25,7 @@ A&C's content (in `core-*` repos) to its consumers (the org CI validator and the
 | `case-study.schema.json` | `…/case-study/1.0` | Documents under `core-developer-portal/case-studies/`. Base + display metadata. |
 | `core-offer.schema.json` | `…/core-offer/1.0` | Documents under `core-developer-portal/go-to-market/`. Base + display metadata. |
 | `agent-skill.schema.json` | `…/agent-skill/1.0` | Every `SKILL.md` (an Agent Skill in its own folder). **Not** the documentation contract: the open Agent Skills format, so assistants load skills unchanged. |
+| `marp-deck.schema.json` | `…/marp-deck/1.0` | Every Marp slide deck (frontmatter with `marp: true`). The six base fields plus Marp's documented directives, which the base contract would reject. |
 
 The specialized schemas are **self-contained** (they restate the base properties rather
 than `$ref`-compose them). This is deliberate: `additionalProperties: false` does not compose
@@ -39,6 +40,7 @@ The org validator (`.github/scripts/validate-frontmatter.py`) picks the schema b
 
 ```text
 **/SKILL.md                              -> agent-skill.schema.json (checked first)
+frontmatter with marp: true              -> marp-deck.schema.json (checked second)
 core-developer-portal/case-studies/**   -> case-study.schema.json
 core-developer-portal/go-to-market/**   -> core-offer.schema.json
 everything else                          -> frontmatter.schema.json (base)

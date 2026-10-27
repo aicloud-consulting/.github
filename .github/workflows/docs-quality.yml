@@ -41,7 +41,7 @@ jobs:
           curl -fsSL $retry "$base/.markdownlint.yml" -o "$RUNNER_TEMP/.markdownlint.yml"
           curl -fsSL $retry "$base/.github/scripts/validate-frontmatter.py" -o "$RUNNER_TEMP/validate-frontmatter.py"
           mkdir -p "$RUNNER_TEMP/schemas"
-          for s in frontmatter.schema.json case-study.schema.json core-offer.schema.json agent-skill.schema.json; do
+          for s in frontmatter.schema.json case-study.schema.json core-offer.schema.json agent-skill.schema.json marp-deck.schema.json; do
             curl -fsSL $retry "$base/schemas/$s" -o "$RUNNER_TEMP/schemas/$s"
           done
 
