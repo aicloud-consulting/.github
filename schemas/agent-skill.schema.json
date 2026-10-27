@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aicloud-consulting/schemas/agent-skill/1.0",
+  "title": "A&C Agent Skill Frontmatter",
+  "description": "The frontmatter of an Agent Skill (a SKILL.md file inside its own folder). Skills follow the open Agent Skills format instead of the A&C documentation contract, so assistants such as Claude can load them unchanged. The rules are the union of the Agent Skills specification (agentskills.io/specification) and Claude's stricter limits (no reserved words in name, no XML in description). The validator additionally checks, in code, that name equals the skill's folder name.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "description"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^(?!.*(anthropic|claude))[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Skill identifier: lowercase letters, digits and single hyphens, no leading or trailing hyphen, without the reserved words 'anthropic' or 'claude'. Must equal the skill's folder name."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1024,
+      "pattern": "^(?=[\\s\\S]*\\S)[^<>]*$",
+      "description": "What the skill covers and when to use it; assistants decide whether to load the skill from this text alone. Non-blank, no '<' or '>'."
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "description": "License name or reference to a bundled license file."
+    },
+    "compatibility": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Environment requirements, only when the skill has them."
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Additional properties not defined by the Agent Skills format, as string keys and string values."
+    },
+    "allowed-tools": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Space-separated tools pre-approved to run (experimental in the Agent Skills format)."
+    }
+  }
+}
