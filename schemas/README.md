@@ -2,7 +2,7 @@
 title: "Frontmatter Schemas — The Content Contract"
 status: "approved"
 owner: "personal-abrahamchavez"
-last_review: "2026-06-30"
+last_review: "2026-10-27"
 source_doc: "Implements ADR-001/ADR-002 (ficentia-corporate-website) D4"
 lang: "en-US"
 ---
@@ -24,6 +24,7 @@ A&C's content (in `core-*` repos) to its consumers (the org CI validator and the
 | `frontmatter.schema.json` | `…/frontmatter/1.0` | **Every** A&C Markdown document (the universal base — the required fields). |
 | `case-study.schema.json` | `…/case-study/1.0` | Documents under `core-developer-portal/case-studies/`. Base + display metadata. |
 | `core-offer.schema.json` | `…/core-offer/1.0` | Documents under `core-developer-portal/go-to-market/`. Base + display metadata. |
+| `agent-skill.schema.json` | `…/agent-skill/1.0` | Every `SKILL.md` (an Agent Skill in its own folder). **Not** the documentation contract: the open Agent Skills format, so assistants load skills unchanged. |
 
 The specialized schemas are **self-contained** (they restate the base properties rather
 than `$ref`-compose them). This is deliberate: `additionalProperties: false` does not compose
@@ -37,10 +38,14 @@ if they ever appear to differ.
 The org validator (`.github/scripts/validate-frontmatter.py`) picks the schema by path:
 
 ```text
+**/SKILL.md                              -> agent-skill.schema.json (checked first)
 core-developer-portal/case-studies/**   -> case-study.schema.json
 core-developer-portal/go-to-market/**   -> core-offer.schema.json
 everything else                          -> frontmatter.schema.json (base)
 ```
+
+For a `SKILL.md`, the validator also checks in code what JSON Schema cannot express: `name` must
+equal the skill's folder name, as the Agent Skills format requires.
 
 ## Consumers
 
