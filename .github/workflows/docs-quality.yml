@@ -57,9 +57,12 @@ jobs:
         with:
           # lychee >=0.15 does not check mail links by default, so the old
           # `--exclude-mail` flag was removed and now errors as an unknown arg.
+          # x.com/twitter.com (403) and instagram.com (302 to login, then 429) reject
+          # GitHub-hosted runners even when the account exists, so CI cannot check them.
           args: >-
             --verbose --no-progress
             --exclude '^https://github\.com/aicloud-consulting/.*'
+            --exclude '^https://(www\.)?(x|twitter|instagram)\.com/'
             '**/*.md'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
